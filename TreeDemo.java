@@ -1,3 +1,4 @@
+
 class Node{
    int value;
    Node left, right;
@@ -10,14 +11,16 @@ class Node{
 
 }
 
+
 class BinarySearchTree{
 
    Node root;
-   
-   
-   /*
-   inserts a node into the tree
-   */
+
+
+   /**
+    * inserts a node into the tree
+    * @param value wich is the valud that the node will hold
+    */
    public void insert(int value){
       //tree is empty
       if(root == null){
@@ -43,15 +46,16 @@ class BinarySearchTree{
                   return;
                }
             }
-
          }//closing while
 
       }//closing main if-else
    }
-   
-   /*
-   pre-order traversal
-   */
+
+
+   /**
+    * pre-order traversal
+    * @param root the root of the tree will be use in the method
+    */
    public void preOrderTraversal(Node root){
       //base case
       if(root == null){return;}
@@ -63,11 +67,11 @@ class BinarySearchTree{
       preOrderTraversal(root.right);
    }
 
-   
-   
-   /*
-   in-order traversal
-   */
+
+   /**
+    * in-order traversal
+    * @param root the root of the tree will be use in the method
+    */
    public void inOrderTraversal(Node root){
       //base case
       if(root == null){return;}
@@ -79,12 +83,12 @@ class BinarySearchTree{
       //go right recursively
       inOrderTraversal(root.right);
    }
-   
-   
-   
-   /*
-   post-order traversal
-   */
+
+
+   /**
+    * post-order traversal
+    * @param root the root of the tree will be use in the method
+    */
    public void postOrderTraversal(Node root){
       //base case
        if(root == null){return;}
@@ -96,18 +100,18 @@ class BinarySearchTree{
       //process the root
       System.out.print(root.value+" ");
    }
-   
-   
-   
-   /*
-   a method to find the node in the tree
-   with a specific value
-   */
+
+
+   /**
+    *   a method to find the node in the tree
+    *   with a specific value
+     * @param root the root of the tree will be use in the method
+    * @param key the vaiue we need to find
+    * @return  true if the key found in the tree, and false if the key not in the tree
+    */
    public boolean find(Node root, int key){
       //base case
-      if(root == null){
-         return false;
-      }
+      if(root == null){return false;}
 
       if(root.value == key){
          return true;
@@ -118,23 +122,24 @@ class BinarySearchTree{
       }
    }
    
-   
-   
-   /*
-   a method to find the node in the tree
-   with a smallest key
-   */
+
+
+   /**
+    *  a method to find the node in the tree with a smallest key
+    * @param root  the root of the tree will be use in the method
+    * @return value of the smalest value in the tree
+    */
    public int getMin(Node root){
       if(root.left == null){return root.value;}
       return getMin(root.left);
    }
-  
-  
-  
-   /*
-   a method to find the node in the tree
-   with a largest key
-   */
+
+
+   /**
+    *  a method to find the node in the tree with a largest key
+    * @param root the root of the tree will be use in the method
+    * @return value of the largest value in the tree
+    */
    public int getMax(Node root){
       if(root.right == null){return root.value;}
       return getMax(root.right);
@@ -143,9 +148,15 @@ class BinarySearchTree{
    
    
    /*
-   this method will not compile until getMax
-   is implemented
+
    */
+
+   /**
+    * delet a node from the tree, this method will not compile until getMax is implemented
+    * @param root the root of the tree will be use in the method
+    * @param key  the vlaue need to be found to get deleted
+    * @return value of the largest value in the tree
+    */
    public Node delete(Node root, int key){
       
       if(root == null){
