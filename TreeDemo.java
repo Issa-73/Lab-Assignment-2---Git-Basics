@@ -124,7 +124,8 @@ class BinarySearchTree{
    with a largest key
    */
    public int getMax(Node root){
-	  //implement me
+      if(root.right == null){return root.value;}
+      return getMaxRec(root.right);
    }
    
    
