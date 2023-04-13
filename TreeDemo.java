@@ -16,26 +16,38 @@ class BinarySearchTree{
    
    
    /*
-   recursive insert method
+   inserts a node into the tree
    */
-   public Node insert(Node root, int value){
-      //base case
+   public void insert(int value){
+      //tree is empty
       if(root == null){
          root = new Node(value);
-         return root;
-      }
-      
-      //recursive step
-      if(value < root.value){
-         root.left = insert(root.left, value); 
+         return;
       }else{
-         root.right = insert(root.right, value);
-      }
-      
-      return root;
+         Node current = root;
+         Node parent = null;
+
+         while(true){
+            parent = current;
+
+            if(value < current.value){
+               current = current.left;
+               if(current == null){
+                  parent.left = new Node(value);
+                  return;
+               }
+            }else{
+               current = current.right;
+               if(current == null){
+                  parent.right = new Node(value);
+                  return;
+               }
+            }
+
+         }//closing while
+
+      }//closing main if-else
    }
-   
-   
    
    /*
    pre-order traversal
@@ -74,8 +86,8 @@ class BinarySearchTree{
    post-order traversal
    */
    public void postOrderTraversal(Node root){
-      //base caseif
-      (root == null){return;}
+      //base case
+       if(root == null){return;}
 
       //go left recursively
       postOrderTraversal(root.left);
@@ -94,16 +106,16 @@ class BinarySearchTree{
    public boolean find(Node root, int key){
       //base case
       if(root == null){
-         root = new Node(value);
-         return root;
+         return false;
       }
-      //recursive step
-      if(value < root.value){
-         root.left = insert(root.left, value);
+
+      if(root.value == key){
+         return true;
+      }else if(key < root.value){
+         return find(root.left, key);
       }else{
-         root.right = insert(root.right, value);
+         return find(root.right, key);
       }
-      return root;
    }
    
    
@@ -114,7 +126,7 @@ class BinarySearchTree{
    */
    public int getMin(Node root){
       if(root.left == null){return root.value;}
-      return getMinRec(root.left);
+      return getMin(root.left);
    }
   
   
@@ -125,7 +137,7 @@ class BinarySearchTree{
    */
    public int getMax(Node root){
       if(root.right == null){return root.value;}
-      return getMaxRec(root.right);
+      return getMax(root.right);
    }
    
    
@@ -167,21 +179,21 @@ class BinarySearchTree{
 }
 
 
-
 public class TreeDemo{
    public static void main(String[] args){
       BinarySearchTree t1  = new BinarySearchTree();
-      t1.insert(24);
-      t1.insert(80);
-      t1.insert(18);
-      t1.insert(9);
-      t1.insert(90);
+      t1.insert( 24);
+      t1.insert( 80);
+      t1.insert( 18);
+      t1.insert( 9);
+      t1.insert( 90);
       t1.insert(22);
-            
+
       System.out.print("in-order :   ");
       t1.inOrderTraversal(t1.root);
       System.out.println();
-           
-      
-   }  
+
+
+   }
 }
+
