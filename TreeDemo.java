@@ -92,8 +92,19 @@ class BinarySearchTree{
    with a specific value
    */
    public boolean find(Node root, int key){
-	  //implement me
-      return false;           
+      //base case
+      if(root == null){
+         root = new Node(value);
+         return root;
+      }
+
+      //recursive step
+      if(value < root.value){
+         root.left = insert(root.left, value);
+      }else{
+         root.right = insert(root.right, value);
+      }
+      return root;
    }
    
    
