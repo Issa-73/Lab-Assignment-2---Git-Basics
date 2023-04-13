@@ -97,7 +97,6 @@ class BinarySearchTree{
          root = new Node(value);
          return root;
       }
-
       //recursive step
       if(value < root.value){
          root.left = insert(root.left, value);
@@ -114,7 +113,8 @@ class BinarySearchTree{
    with a smallest key
    */
    public int getMin(Node root){
-      //implement me
+      if(root.left == null){return root.value;}
+      return getMinRec(root.left);
    }
   
   
