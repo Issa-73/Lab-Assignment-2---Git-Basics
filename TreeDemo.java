@@ -41,7 +41,14 @@ class BinarySearchTree{
    pre-order traversal
    */
    public void preOrderTraversal(Node root){
-      //implement me
+      //base case
+      if(root == null){return;}
+
+      System.out.print(root.value+" ");
+      //go left recursively
+      preOrderTraversal(root.left);
+      //go right recursively
+      preOrderTraversal(root.right);
    }
 
    
